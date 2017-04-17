@@ -1,9 +1,7 @@
 package com.lenovo.maker.web.error;
 
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
-import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.RequestAttributes;
 
 import java.util.Map;
@@ -11,7 +9,7 @@ import java.util.Map;
 /**
  * Created by zhaodongjie on 2017/4/16.
  */
-@Configurable
+@Configuration
 public class MakerErrorController implements ErrorAttributes{
 
     @Override

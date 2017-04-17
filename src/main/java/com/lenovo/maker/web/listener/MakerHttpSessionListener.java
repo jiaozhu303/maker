@@ -7,15 +7,17 @@ import javax.servlet.http.HttpSessionListener;
 /**
  * Created by zhaodj5 on 2017-04-17.
  */
-@WebListener("/")
+@WebListener
 public class MakerHttpSessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
+         httpSessionEvent.getSession().setAttribute("name", "aaaa");
         System.out.println("MakerHttpSessionListener sessionCreated ... " );
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        System.out.println("MakerHttpSessionListener sessionDestroyed ... " );
+        Object name = httpSessionEvent.getSession().getAttribute("name");
+        System.out.println("MakerHttpSessionListener sessionDestroyed ... " + name);
     }
 }

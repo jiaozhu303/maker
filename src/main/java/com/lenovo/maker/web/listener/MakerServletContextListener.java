@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebListener;
 /**
  * Created by zhaodj5 on 2017-04-17.
  */
-@WebListener("/")
+@WebListener
 class MakerServletContextListener implements ServletContextListener {
 
     @Override

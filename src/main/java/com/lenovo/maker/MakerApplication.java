@@ -1,23 +1,13 @@
 package com.lenovo.maker;
-
-//import com.lenovo.maker.web.filter.MakerFilter;
-//import com.lenovo.maker.web.listener.MakerHttpSessionListener;
-//import com.lenovo.maker.web.servlet.MakerServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @ServletComponentScan
 @SpringBootApplication
-@ComponentScan("com.lenovo.maker")
 public class MakerApplication {
 
     //    代码注册servlet
