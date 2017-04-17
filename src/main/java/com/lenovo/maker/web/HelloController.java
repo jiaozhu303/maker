@@ -10,10 +10,16 @@ import javax.xml.ws.RequestWrapper;
  * Created by zhaodongjie on 2017/4/16.
  */
 @RestController
+@RequestMapping(value = "/maker")
 public class HelloController {
 
-    @RequestMapping(value = "/", method= RequestMethod.GET)
+    @RequestMapping(value = "/def" ,method= RequestMethod.GET)
     public String getHello(){
         return "hello world!";
+    }
+
+    @RequestMapping(value = "/use",method= RequestMethod.GET)
+    public String getHello2(){
+        return "hello2 world!";
     }
 }

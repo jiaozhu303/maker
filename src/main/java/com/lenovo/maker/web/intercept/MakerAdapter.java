@@ -1,8 +1,6 @@
-package com.lenovo.maker.web.adapter;
+package com.lenovo.maker.web.intercept;
 
-import com.lenovo.maker.web.intercept.MakerIntercepter;
-import org.apache.catalina.filters.RemoteIpFilter;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -14,14 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configurable
 public class MakerAdapter extends WebMvcConfigurerAdapter {
 
-    @Bean
-    public MakerIntercepter localeChangeInterceptor() {
-        return new MakerIntercepter();
-    }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
+        // 多个拦截器组成一个拦截器链
+        // addPathPatterns 用于添加拦截规则
+        // excludePathPatterns 用户排除拦截
+        registry.addInterceptor(new MakerIntercepter()).addPathPatterns("/**");
+        super.addInterceptors(registry);
     }
 
 }

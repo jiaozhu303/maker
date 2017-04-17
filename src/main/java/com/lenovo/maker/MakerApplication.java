@@ -1,30 +1,57 @@
 package com.lenovo.maker;
 
+//import com.lenovo.maker.web.filter.MakerFilter;
+//import com.lenovo.maker.web.listener.MakerHttpSessionListener;
+//import com.lenovo.maker.web.servlet.MakerServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+@ServletComponentScan
 @SpringBootApplication
+@ComponentScan("com.lenovo.maker")
 public class MakerApplication {
 
-	public static void main(String[] args) {
-//		SpringApplication.run(MakerApplication.class, args);
-		SpringApplication app = new SpringApplication(MakerApplication.class);
-//		app.addInitializers();
-		app.setAdditionalProfiles("classpath:/profile/spring-all.profile");
-		app.setWebEnvironment(true);
-		app.run(args);
-	}
+    //    代码注册servlet
+//    @Bean
+//    public ServletRegistrationBean servletRegistrationBean() {
+//        return new ServletRegistrationBean(new MakerServlet(), "/maker");// ServletName默认值为首字母小写
+//    }
+//
+//    @Bean
+//    public FilterRegistrationBean filterRegistrationBean() {
+//        return new FilterRegistrationBean(new MakerFilter(), servletRegistrationBean());// ServletName默认值为首字母小写，即myServlet
+//    }
+//
+//    @Bean
+//    public ServletListenerRegistrationBean servletListenerRegistrationBean() {
+//        return new ServletListenerRegistrationBean(new MakerHttpSessionListener());// ServletName默认值为首字母小写，即myServlet
+//    }
 
-	@PostConstruct
-	public void init(){
+    public static void main(String[] args) {
+		SpringApplication.run(MakerApplication.class, args);
+//        SpringApplication app = new SpringApplication(MakerApplication.class);
+//		  app.addInitializers();
+//        app.setAdditionalProfiles("classpath:/profile/spring-all.profile");
+//        app.setWebEnvironment(true);
+//        app.run(args);
+    }
+
+    @PostConstruct
+    public void init() {
         System.out.println("init app ...");
     }
 
-	@PreDestroy
-	public void distoryMath(){
-		System.out.println("distroy app ... ");
-	}
+    @PreDestroy
+    public void distoryMath() {
+        System.out.println("distroy app ... ");
+    }
 }

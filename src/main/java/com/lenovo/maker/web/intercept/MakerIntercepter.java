@@ -1,7 +1,7 @@
 package com.lenovo.maker.web.intercept;
 
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by zhaodongjie on 2017/4/16.
  */
-public class MakerIntercepter extends HandlerInterceptorAdapter {
+public class MakerIntercepter implements HandlerInterceptor  {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        System.out.println("preHandle ... ");
+        System.out.println("MakerIntercepter preHandle ... ");
         return true;
     }
 
@@ -25,7 +25,7 @@ public class MakerIntercepter extends HandlerInterceptorAdapter {
     public void postHandle(
             HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)
             throws Exception {
-        System.out.println("postHandle ... ");
+        System.out.println("MakerIntercepter postHandle ... ");
     }
 
     /**
@@ -35,16 +35,7 @@ public class MakerIntercepter extends HandlerInterceptorAdapter {
     public void afterCompletion(
             HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-        System.out.println("afterCompletion ... ");
+        System.out.println("MakerIntercepter afterCompletion ... ");
     }
 
-    /**
-     * This implementation is empty.
-     */
-    @Override
-    public void afterConcurrentHandlingStarted(
-            HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-        System.out.println("afterConcurrentHandlingStarted ... ");
-    }
 }
