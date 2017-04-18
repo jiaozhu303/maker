@@ -1,4 +1,9 @@
 package com.lenovo.maker;
+import com.lenovo.maker.event.MakerApplicationFailedEvent;
+import com.lenovo.maker.event.MakerApplicationPreparedEvent;
+import com.lenovo.maker.event.MakerEnvironmentPreparedEvent;
+import com.lenovo.maker.event.MakerStartedEvent;
+import com.lenovo.maker.listeners.MakerListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -27,12 +32,15 @@ public class MakerApplication {
 //    }
 
     public static void main(String[] args) {
-		SpringApplication.run(MakerApplication.class, args);
-//        SpringApplication app = new SpringApplication(MakerApplication.class);
-//		  app.addInitializers();
-//        app.setAdditionalProfiles("classpath:/profile/spring-all.profile");
-//        app.setWebEnvironment(true);
-//        app.run(args);
+//		  SpringApplication.run(MakerApplication.class, args);
+        SpringApplication app = new SpringApplication(MakerApplication.class);
+        app.addListeners(new MakerStartedEvent());
+        app.addListeners(new MakerEnvironmentPreparedEvent());
+        app.addListeners(new MakerListener());
+        app.addListeners(new MakerApplicationPreparedEvent());
+        app.addListeners(new MakerApplicationFailedEvent());
+        app.setWebEnvironment(true);
+        app.run(args);
     }
 
     @PostConstruct
